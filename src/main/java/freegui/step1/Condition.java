@@ -1,5 +1,7 @@
 package freegui.step1;
 
+import util.DateUtil;
+
 public class Condition {
 
     public static void main(String[] args) {
@@ -15,12 +17,15 @@ public class Condition {
         System.out.println(result);//在控制台打印 result 变量存放的数据
 
 
+//        System.out.println(c1.get(Calendar.YEAR)+"年"+(c1.get(Calendar.MONTH)+1)+"月"+c1.get(Calendar.DATE)+"日");
+        DateUtil dateUtil = new DateUtil();
 
+        System.out.println(DateUtil.getDate());
 
-
-
-
-
+        int week = DateUtil.getDate();
+        if (4 == week) {
+            System.out.println("今天是周四");
+        }
 
 
         //条件判断语句 if（逻辑运算表达式）
@@ -30,4 +35,6 @@ public class Condition {
             System.out.println("程序有问题");
         }
     }
+
+
 }

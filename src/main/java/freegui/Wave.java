@@ -6,37 +6,42 @@ public class Wave extends Sprite {
     }
 
     @Override
-    void update() {
+    public void afterEndLive() {
+
+    }
+
+    @Override
+   protected void update() {
         x+=1;
     }
 
     @Override
-    void draw(Context context) {
+    protected void draw(Context context) {
         context.drawOval(x,y,width,height,true);
     }
 
     @Override
-    void up() {
+    protected void up() {
 
     }
 
     @Override
-    void down() {
+    protected   void down() {
 
     }
 
     @Override
-    void left() {
+    protected   void left() {
 
     }
 
     @Override
-    void right() {
+    protected  void right() {
 
     }
 
     @Override
-    void space() {
+    protected  void space() {
 
     }
 }

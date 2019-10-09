@@ -36,13 +36,13 @@ public class Vote {
     }
 
     public static void vote(){
-        int count = 100;
-        int id = 322310;
+        int count = 20;
+        int id = 322312;
         String verifyCode = "";
         for (int i = 0; i < count; i++) {
             sendRequest(id,verifyCode);
             try {
-                Thread.sleep(2000);
+                Thread.sleep(5000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

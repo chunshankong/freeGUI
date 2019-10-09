@@ -1,10 +1,14 @@
 package freegui;
 
+import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.util.function.Function;
 
 public abstract class Sprite implements KeyEventListener{
 
     protected int x,y,width,height;
+
+    protected boolean live = true;
 
     public Sprite(int x,int y,int width,int height){
         this.x = x;
@@ -13,22 +17,32 @@ public abstract class Sprite implements KeyEventListener{
         this.height = height;
     }
 
-    public Sprite(int x,int y){
-        this.x = x;
-        this.y = y;
-        this.width = 100;
-        this.height = 100;
+    public boolean isLive() {
+        return live;
+    }
+    protected void setLive(boolean live){
+        this.live = live;
     }
 
-    public Sprite(){
-        this.x = 0;
-        this.y = 0;
-        this.width = 100;
-        this.height = 100;
+    public void endLive(){
+        if (!isLive()){
+            return;
+        }
+        setLive(false);
+        afterEndLive();
+    }
+    protected abstract void afterEndLive();
+
+    protected void dispose(){
+        Window.removeSprite(this);
     }
 
-    abstract void update();
-    abstract void draw(Context context);
+    public Rectangle getBounds(){
+        return new Rectangle(x,y,width,height);
+    }
+
+    protected abstract void update();
+    protected abstract void draw(Context context);
 
 
     public void keyDown(int keyCode) {
@@ -56,16 +70,17 @@ public abstract class Sprite implements KeyEventListener{
         }
     }
 
-    abstract void up();
-    abstract void down();
-    abstract void left();
-    abstract void right();
+    protected abstract void up();
+    protected abstract void down();
+    protected abstract void left();
+    protected abstract void right();
 
-    abstract void space();
+    protected abstract void space();
 
     public void keyUp(int keyCode) {
 
     }
+
 
 
 }
